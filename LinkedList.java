@@ -49,6 +49,35 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
 
     }
 
+
+    public void recursivePrint(ListNode head){
+
+        if(head == this.head)
+           System.out.print("[ ");
+
+        if(head == null){
+            System.out.println("]");
+            return;
+        } 
+
+        System.out.print(head.data+" ");
+        
+        recursivePrint(head.link);
+
+    }
+
+    public void reverseRecursivePrint(ListNode head){
+
+        if(head == null) return;
+
+        reverseRecursivePrint(head.link);
+
+        System.out.print(head.data+" ");
+
+    }
+
+
+
     @Override
     public void add(T data) {
 
