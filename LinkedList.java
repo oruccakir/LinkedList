@@ -76,6 +76,18 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
 
     }
 
+    public int recursiveSearch(ListNode head,T data){
+
+        if(head == null) return -1;
+
+        if(head.data.equals(data)) return 0;
+
+        int result = recursiveSearch(head.link,data);
+
+        return (result == -1 ) ? -1 : result+1;
+
+    }
+
 
 
     @Override
@@ -389,13 +401,75 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
     public static void main(String args[]){
 
         
+    LinkedList<Temp > linkedList = new LinkedList<>();
+
+    Temp temp = new Temp(122,15);
+    Temp temp1= new Temp(122,15);
+
+    linkedList.add(new Temp(12,15));
+    linkedList.add(new Temp(1,15));
+    linkedList.add(new Temp(2,15));
+    linkedList.add(new Temp(122,15));
+    linkedList.add(new Temp(162,15));
+
+    linkedList.recursivePrint(linkedList.head);
+
+    int res = linkedList.recursiveSearch(linkedList.head, temp);
+    int res1 = linkedList.indexOf(temp);
     
-      
-       
+    System.out.println(res);
+
+    System.out.println(temp.equals(temp1));
 
     }
 
 
+}
+
+class Temp implements PubliclyCloneable{
+
+    private int x, y ;
+
+    public Temp (int x, int y)  {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Temp (Temp other){
+
+        this.x = other.x;
+        this.y = other.y;
+    }
+
+    public Object clone(){
+        return new Temp(this);
+    }
+
+    public String toString(){
+        return ""+x+" "+y;
+    }
+
+    public boolean equals(Object other){
+
+        if(other == null) return false;
+
+        if(this.getClass() != other.getClass()) return false;
+
+        Temp temp = (Temp)other;
+
+        return this.x == temp.x && this.y == temp.y;
+
+    }
+
+    public boolean equals(Temp temp){
+
+        if(temp == null) return false;
+
+        System.out.println(" fmfmfm");
+
+        return this.x == temp.x && this.y == temp.y;
+
+    }
 
 
 
