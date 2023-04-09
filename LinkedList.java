@@ -88,6 +88,29 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
 
     }
 
+    public void reverseTheList(){
+
+        if(this.head == null || this.head.link == null) 
+           return;
+
+        ListNode temp = null, prev = null, curr = this.head;
+
+        while(curr != null){
+
+            temp = curr.link;
+
+            curr.link = prev;
+
+            prev = curr;
+
+            curr = temp;
+
+        }
+
+        this.head = prev;
+
+    }
+
 
 
     @Override
