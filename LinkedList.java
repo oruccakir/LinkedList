@@ -112,6 +112,24 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
     }
 
 
+    public Integer convertIntegerNumber(ListNode head,Integer mult){
+
+        if(head.link == null){
+
+             Object intData = head.data;
+
+             return (Integer)(intData);
+
+        }
+
+        Object intData = head.data;
+
+
+        return (Integer) intData*mult + convertIntegerNumber(head.link, mult/10);
+
+    }
+
+
 
     @Override
     public void add(T data) {
@@ -443,6 +461,9 @@ public class LinkedList <T extends PubliclyCloneable> implements LinkedListInter
     System.out.println(res);
 
     System.out.println(temp.equals(temp1));
+
+
+    LinkedList<> linkedList2 = new LinkedList<>();
 
     }
 
